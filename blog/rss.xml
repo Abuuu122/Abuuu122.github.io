@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>My Site Blog</title>
+        <link>https://Abuuu122.github.io/blog</link>
+        <description>My Site Blog</description>
+        <lastBuildDate>Sat, 21 May 2022 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[linux instruction]]></title>
+            <link>https://Abuuu122.github.io/blog/linux-instruction</link>
+            <guid>https://Abuuu122.github.io/blog/linux-instruction</guid>
+            <pubDate>Sat, 21 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Linux文件属性]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux文件属性">Linux文件属性<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7" class="hash-link" aria-label="Direct link to Linux文件属性" title="Direct link to Linux文件属性">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="查看文件属性">查看文件属性<a href="https://abuuu122.github.io/blog/linux-instruction#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7" class="hash-link" aria-label="Direct link to 查看文件属性" title="Direct link to 查看文件属性">​</a></h3>
+<p>使用ll或者ls -l</p>
+<p>hjc@hjc-virtual-machine:~/Downloads$ ls -l total 1056
+drwxr-xr-x 2 hjc hjc    4096  2月 28 22:41 datalab
+-rw-rw-r-- 1 hjc hjc 1075200  2月 27 21:34 datalab.tar</p>
+<p>前十个字符表示文件属性</p>
+<table><thead><tr><th style="text-align:center">文件类型</th><th style="text-align:center">属主权限</th><th style="text-align:center">属组权限</th><th style="text-align:center">其他用户权限</th></tr></thead><tbody><tr><td style="text-align:center">d(文件夹)</td><td style="text-align:center">rwx</td><td style="text-align:center">rwx</td><td style="text-align:center">rwx</td></tr></tbody></table>
+<blockquote>
+<p>当为 d 则是目录
+当为 - 则是文件；
+若是 l 则表示为链接文档(link file)；
+若是 b 则表示为装置文件里面的可供储存的接口设备(可随机存取装置)；
+若是 c 则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</p>
+</blockquote>
+<blockquote>
+<p>r : readable
+w : writable
+x : executable
+- : no permission</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="更改文件属性">更改文件属性<a href="https://abuuu122.github.io/blog/linux-instruction#%E6%9B%B4%E6%94%B9%E6%96%87%E4%BB%B6%E5%B1%9E%E6%80%A7" class="hash-link" aria-label="Direct link to 更改文件属性" title="Direct link to 更改文件属性">​</a></h3>
+<ol>
+<li>
+<p>chgrp</p>
+<p>chgrp [-R] 属组名 文件名</p>
+</li>
+<li>
+<p>chown</p>
+<p>chown [–R] 属主名 文件名
+chown [-R] 属主名：属组名 文件名</p>
+</li>
+<li>
+<p>chmod</p>
+</li>
+</ol>
+<ul>
+<li>按数字</li>
+</ul>
+<blockquote>
+<p>r:4  w:2  x:1
+user = rwx = 4+2+1 = 7
+group = rwx = 4+2+1 = 7
+others = --- = 0+0+0 = 0
+三个数字代表三组权限 e.g. 777</p>
+</blockquote>
+<p>chmod [-R] xyz 文件或目录</p>
+<ul>
+<li>按符号</li>
+</ul>
+<blockquote>
+<p>u, g, o, a: user, group, others, all
++: add permission
+-: cancel permission
+=: set permission</p>
+</blockquote>
+<p>example:</p>
+<p>chmod u=rwx,g=rx,o=r  test1</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux文件与目录管理">Linux文件与目录管理<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E6%96%87%E4%BB%B6%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86" class="hash-link" aria-label="Direct link to Linux文件与目录管理" title="Direct link to Linux文件与目录管理">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lslist">ls(list)<a href="https://abuuu122.github.io/blog/linux-instruction#lslist" class="hash-link" aria-label="Direct link to ls(list)" title="Direct link to ls(list)">​</a></h3>
+<p>ls [-adl] (目录名)</p>
+<blockquote>
+<p>-a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)
+-d ：仅列出目录本身，而不是列出目录内的文件数据(常用)
+-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)
+-i ：显示文件的inode节点信息</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cdchange-directory">cd(change directory)<a href="https://abuuu122.github.io/blog/linux-instruction#cdchange-directory" class="hash-link" aria-label="Direct link to cd(change directory)" title="Direct link to cd(change directory)">​</a></h3>
+<p>cd [相对路径或绝对路径]
+cd ~
+cd ..
+cd ./file</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="pwdprint-working-directory">pwd(print working directory)<a href="https://abuuu122.github.io/blog/linux-instruction#pwdprint-working-directory" class="hash-link" aria-label="Direct link to pwd(print working directory)" title="Direct link to pwd(print working directory)">​</a></h3>
+<p>pwd [-P]</p>
+<blockquote>
+<p>-P ：显示出确实的路径，而非使用链接 (link) 路径。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mkdirmake-directory">mkdir(make directory)<a href="https://abuuu122.github.io/blog/linux-instruction#mkdirmake-directory" class="hash-link" aria-label="Direct link to mkdir(make directory)" title="Direct link to mkdir(make directory)">​</a></h3>
+<p>mkdir [-mp] 目录名</p>
+<blockquote>
+<p>-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～
+-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</p>
+</blockquote>
+<p>example:</p>
+<p>mkdir -p test1/test2/test3 #必须加-p</p>
+<p>mkdir -m 711 test #创建权限为 rwx--x--x 的目录</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rmdirremove-directory">rmdir(remove directory)<a href="https://abuuu122.github.io/blog/linux-instruction#rmdirremove-directory" class="hash-link" aria-label="Direct link to rmdir(remove directory)" title="Direct link to rmdir(remove directory)">​</a></h3>
+<p>rmdir [-p] 目录名称</p>
+<blockquote>
+<p>-p ：从该目录起，一次删除多级空目录</p>
+</blockquote>
+<p>要注意的是，这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cpcopy">cp(copy)<a href="https://abuuu122.github.io/blog/linux-instruction#cpcopy" class="hash-link" aria-label="Direct link to cp(copy)" title="Direct link to cp(copy)">​</a></h3>
+<p>cp [-adfilprsu] (source) (destination)
+cp [-adfilprsu] source1 source2 ... directory</p>
+<blockquote>
+<p>-a：相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)
+-d：若来源档为链接档的属性(link file)，则复制链接档属性而非文件本身；
+-f：为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；
+-i：若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)
+-l：进行硬式链接(hard link)的链接档创建，而非复制文件本身；
+-p：连同文件的属性一起复制过去，而非使用默认属性(备份常用)；
+-r：递归持续复制，用於目录的复制行为；(常用)
+-s：复制成为符号链接档 (symbolic link)，亦即『捷径』文件；
+-u：若 destination 比 source 旧才升级 destination ！</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rmremove">rm(remove)<a href="https://abuuu122.github.io/blog/linux-instruction#rmremove" class="hash-link" aria-label="Direct link to rm(remove)" title="Direct link to rm(remove)">​</a></h3>
+<p>rm [-fir] 文件或目录</p>
+<blockquote>
+<p>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；
+-i ：互动模式，在删除前会询问使用者是否动作
+-r ：递归删除啊！最常用在目录的删除了！这是非常危险的选项！！！</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mvmove">mv(move)<a href="https://abuuu122.github.io/blog/linux-instruction#mvmove" class="hash-link" aria-label="Direct link to mv(move)" title="Direct link to mv(move)">​</a></h3>
+<p>mv [-fiu] source destination
+mv [-fiu] source destination</p>
+<blockquote>
+<p>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；
+-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！
+-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux文件内容查看">Linux文件内容查看<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B" class="hash-link" aria-label="Direct link to Linux文件内容查看" title="Direct link to Linux文件内容查看">​</a></h2>
+<ul>
+<li>cat  由第一行开始显示文件内容</li>
+<li>tac  从最后一行开始显示，可以看出 tac 是 cat 的倒着写！</li>
+<li>nl   显示的时候，顺道输出行号！</li>
+<li>more 一页一页的显示文件内容</li>
+<li>less 与 more 类似，但是比 more 更好的是，他可以往前翻页！</li>
+<li>head 只看头几行 -n number: 看number行</li>
+<li>tail 只看尾巴几行</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux链接">Linux链接<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E9%93%BE%E6%8E%A5" class="hash-link" aria-label="Direct link to Linux链接" title="Direct link to Linux链接">​</a></h2>
+<ul>
+<li>硬链接(Hard Link)</li>
+</ul>
+<p>Linux文件系统中，磁盘中每个文件都有各自的索引节点号Inode。A是B的硬链接，那么这两个文件名对应的<code>Inode相同</code>，指向同一个文件。具有<code>平等关系</code>，类似<code>引用</code>。一个文件真正删除的条件是它的所有硬链接都被删除。</p>
+<ul>
+<li>软链接(符号链接)(Symbolic Link)</li>
+</ul>
+<p>软链接类似windows的shortcut，是一个保存另一个文件路径名的文本文件。A是B的软链接，那么这两个文件名对应的<code>Inode不同</code>，指向不同文件。具有<code>主从关系</code>，类似<code>指针</code>。</p>
+<p>[oracle@Linux]$ touch f1          #创建一个测试文件f1
+[oracle@Linux]$ ln f1 f2          #创建f1的一个硬连接文件f2
+[oracle@Linux]$ ln -s f1 f3       #创建f1的一个符号连接文件f3
+[oracle@Linux]$ ls -li            # -i参数显示文件的inode节点信息
+total 0
+9797648 -rw-r--r--  2 oracle oinstall 0 Apr 21 08:11 f1
+9797648 -rw-r--r--  2 oracle oinstall 0 Apr 21 08:11 f2
+9797649 lrwxrwxrwx  1 oracle oinstall 2 Apr 21 08:11 f3 -&gt; f1</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux用户组管理">Linux用户(组)管理<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E7%94%A8%E6%88%B7%E7%BB%84%E7%AE%A1%E7%90%86" class="hash-link" aria-label="Direct link to Linux用户(组)管理" title="Direct link to Linux用户(组)管理">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="添加用户">添加用户<a href="https://abuuu122.github.io/blog/linux-instruction#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7" class="hash-link" aria-label="Direct link to 添加用户" title="Direct link to 添加用户">​</a></h3>
+<p>useradd 选项 用户名</p>
+<h1>useradd -s /bin/sh -g group –G adm,root gem</h1>
+<blockquote>
+<p>-c comment 指定一段注释性描述。
+-d 目录 指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录。
+-g 用户组 指定用户所属的用户组。
+-G 用户组，用户组 指定用户所属的附加组。
+-s Shell文件 指定用户的登录Shell。
+-u 用户号 指定用户的用户号，如果同时有-o选项，则可以重复使用其他用户的标识号。如果几个用户名对应的用户标识号是一样的，系统内部将把它们视为同一个用户，但是它们可以有不同的口令、不同的主目录以及不同的登录Shell等。0是超级用户root的标识号,普通用户的标识号从100开始。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="删除账号">删除账号<a href="https://abuuu122.github.io/blog/linux-instruction#%E5%88%A0%E9%99%A4%E8%B4%A6%E5%8F%B7" class="hash-link" aria-label="Direct link to 删除账号" title="Direct link to 删除账号">​</a></h3>
+<p>userdel 选项 用户名</p>
+<h1>-r，把用户的主目录一起删除</h1>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="修改账号">修改账号<a href="https://abuuu122.github.io/blog/linux-instruction#%E4%BF%AE%E6%94%B9%E8%B4%A6%E5%8F%B7" class="hash-link" aria-label="Direct link to 修改账号" title="Direct link to 修改账号">​</a></h3>
+<p>usermod 选项 用户名</p>
+<h1>选项同useradd</h1>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="口令管理">口令管理<a href="https://abuuu122.github.io/blog/linux-instruction#%E5%8F%A3%E4%BB%A4%E7%AE%A1%E7%90%86" class="hash-link" aria-label="Direct link to 口令管理" title="Direct link to 口令管理">​</a></h3>
+<p><em>用户账号刚创建时没有口令，但是被系统锁定，无法使用，必须为其指定口令后才可以使用</em></p>
+<p>passwd 选项 用户名</p>
+<blockquote>
+<p>-l 锁定口令，即禁用账号。
+-u 口令解锁。
+-d 使账号无口令。
+-f 强迫用户下次登录时修改口令。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="添加用户组">添加用户组<a href="https://abuuu122.github.io/blog/linux-instruction#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7%E7%BB%84" class="hash-link" aria-label="Direct link to 添加用户组" title="Direct link to 添加用户组">​</a></h3>
+<p>groupadd 选项 用户组</p>
+<blockquote>
+<p>-g GID 指定新用户组的组标识号（GID）。
+-o 一般与-g选项同时使用，表示新用户组的GID可以与系统已有用户组的GID相同。GID对应/etc/group里一条记录</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="删除用户组">删除用户组<a href="https://abuuu122.github.io/blog/linux-instruction#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E7%BB%84" class="hash-link" aria-label="Direct link to 删除用户组" title="Direct link to 删除用户组">​</a></h3>
+<p>groupdel 用户组</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="修改用户组">修改用户组<a href="https://abuuu122.github.io/blog/linux-instruction#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%BB%84" class="hash-link" aria-label="Direct link to 修改用户组" title="Direct link to 修改用户组">​</a></h3>
+<p>groupmod 选项 用户组</p>
+<blockquote>
+<p>-g GID 为用户组指定新的组标识号。
+-o 与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
+-n新用户组 将用户组的名字改为新名字</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="切换用户组">切换用户组<a href="https://abuuu122.github.io/blog/linux-instruction#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7%E7%BB%84" class="hash-link" aria-label="Direct link to 切换用户组" title="Direct link to 切换用户组">​</a></h3>
+<p>newgrp 用户组</p>
+<h1>前提是该用户组确实是该用户的主组或附加组</h1>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="etc的几个重要文件">/etc的几个重要文件<a href="https://abuuu122.github.io/blog/linux-instruction#etc%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6" class="hash-link" aria-label="Direct link to /etc的几个重要文件" title="Direct link to /etc的几个重要文件">​</a></h3>
+<p><em>/etc/passwd中的每一条记录对应一个用户</em>
+<code>用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell</code></p>
+<p><em>口令加密后存放在/etc/shadow, 由pwconv命令依照/etc/passwd自动生成</em>
+<code>登录名:加密口令:最后一次修改时间:最小时间间隔:最大时间间隔:警告时间:不活动时间:失效时间:标志</code></p>
+<p><em>用户组的所有信息都存放在/etc/group文件中</em>
+<code>组名:口令:组标识号:组内用户列表</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="超级用户">超级用户<a href="https://abuuu122.github.io/blog/linux-instruction#%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7" class="hash-link" aria-label="Direct link to 超级用户" title="Direct link to 超级用户">​</a></h3>
+<h1>切换到root</h1>
+<p>sudo -i
+su</p>
+<h1>登出root</h1>
+<p>exit</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="linux磁盘管理">Linux磁盘管理<a href="https://abuuu122.github.io/blog/linux-instruction#linux%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86" class="hash-link" aria-label="Direct link to Linux磁盘管理" title="Direct link to Linux磁盘管理">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="df">df<a href="https://abuuu122.github.io/blog/linux-instruction#df" class="hash-link" aria-label="Direct link to df" title="Direct link to df">​</a></h3>
+<p>disk free, 列出文件系统的整体磁盘使用量</p>
+<p>df [-ahikHTm] [目录或文件名]</p>
+<blockquote>
+<p>-a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；
+-k ：以 KBytes 的容量显示各文件系统；
+-m ：以 MBytes 的容量显示各文件系统；
+-h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；
+-H ：以 M=1000K 取代 M=1024K 的进位方式；
+-T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；
+-i ：不用硬盘容量，而以 inode 的数量来显示</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="du">du<a href="https://abuuu122.github.io/blog/linux-instruction#du" class="hash-link" aria-label="Direct link to du" title="Direct link to du">​</a></h3>
+<p>disk used, 对文件和目录磁盘使用的空间的查看</p>
+<p>du [-ahskm] 文件或目录名称</p>
+<blockquote>
+<p>-a ：列出所有的文件与目录容量，因为默认仅统计目录底下的文件量而已。
+-h ：以人们较易读的容量格式 (G/M) 显示；
+-s ：列出总量而已，而不列出每个各别的目录占用容量；
+-S ：不包括子目录下的总计，与 -s 有点差别。
+-k ：以 KBytes 列出容量显示；
+-m ：以 MBytes 列出容量显示；</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fdisk">fdisk<a href="https://abuuu122.github.io/blog/linux-instruction#fdisk" class="hash-link" aria-label="Direct link to fdisk" title="Direct link to fdisk">​</a></h3>
+<p>磁盘分区表操作工具</p>
+<p>fdisk [-l] 装置名称</p>
+<blockquote>
+<p>-l ：输出后面接的装置所有的分区内容。若仅有 fdisk -l 时， 则系统将会把整个系统内能够搜寻到的装置的分区均列出来。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="格式化">格式化<a href="https://abuuu122.github.io/blog/linux-instruction#%E6%A0%BC%E5%BC%8F%E5%8C%96" class="hash-link" aria-label="Direct link to 格式化" title="Direct link to 格式化">​</a></h3>
+<p>mkfs(make filesystem)</p>
+<p>mkfs [-t 文件系统格式] 装置文件名</p>
+<blockquote>
+<p>-t ：可以接文件系统格式，例如 ext3, ext2, vfat 等(系统有支持才会生效)</p>
+</blockquote>
+<p>// 查看 mkfs 支持的文件格式
+[root@www ~]# mkfs[tab][tab]
+mkfs         mkfs.cramfs  mkfs.ext2    mkfs.ext3    mkfs.msdos   mkfs.vfat</p>
+<p>//将分区 /dev/hdc6（可指定你自己的分区） 格式化为 ext3 文件系统：
+[root@www ~]# mkfs -t ext3 /dev/hdc6</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="磁盘挂载与卸除">磁盘挂载与卸除<a href="https://abuuu122.github.io/blog/linux-instruction#%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD%E4%B8%8E%E5%8D%B8%E9%99%A4" class="hash-link" aria-label="Direct link to 磁盘挂载与卸除" title="Direct link to 磁盘挂载与卸除">​</a></h3>
+<p><code>mount [-t 文件系统] [-L Label名] [-o 额外选项] [-n] 装置文件</code></p>
+<p>//将刚创建的 /dev/hdc6 挂载到 /mnt/hdc6 上面
+[root@www ~]# mkdir /mnt/hdc6
+[root@www ~]# mount /dev/hdc6 /mnt/hdc6
+[root@www ~]# df
+Filesystem           1K-blocks      Used Available Use% Mounted on
+.....中间省略.....
+/dev/hdc6              1976312     42072   1833836   3% /mnt/hdc6</p>
+<p><code>umount [-fn] 装置文件名或挂载点</code></p>
+<blockquote>
+<p>-f ：强制卸除！可用在类似网络文件系统 (NFS) 无法读取到的情况下；
+-n ：不升级 /etc/mtab 情况下卸除</p>
+</blockquote>]]></content:encoded>
+            <category>linux</category>
+        </item>
+        <item>
+            <title><![CDATA[git instruction]]></title>
+            <link>https://Abuuu122.github.io/blog/git-instruction</link>
+            <guid>https://Abuuu122.github.io/blog/git-instruction</guid>
+            <pubDate>Fri, 20 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Basic workflow]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="basic-workflow">Basic workflow<a href="https://abuuu122.github.io/blog/git-instruction#basic-workflow" class="hash-link" aria-label="Direct link to Basic workflow" title="Direct link to Basic workflow">​</a></h2>
+<ul>
+<li>git init</li>
+<li>git add file_name | git add .</li>
+<li>git commit -m "message"
+git commit -am "message"(add and commit at the same time)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="auxiliary-instructions">Auxiliary instructions<a href="https://abuuu122.github.io/blog/git-instruction#auxiliary-instructions" class="hash-link" aria-label="Direct link to Auxiliary instructions" title="Direct link to Auxiliary instructions">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="branch-instructions">Branch instructions<a href="https://abuuu122.github.io/blog/git-instruction#branch-instructions" class="hash-link" aria-label="Direct link to Branch instructions" title="Direct link to Branch instructions">​</a></h2>
+<ul>
+<li>git branch (check the branch list)</li>
+<li>git branch br (create a new branch named br)</li>
+<li>git branch -d br (delete the branch br)<br>
+<!-- -->git branch -D br (forced deletion even not merged)</li>
+<li>git checkout br (move to branch br)</li>
+<li>git checkout -b br (create a new branch named br and move to it)</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="github">Github<a href="https://abuuu122.github.io/blog/git-instruction#github" class="hash-link" aria-label="Direct link to Github" title="Direct link to Github">​</a></h2>
+<ul>
+<li>git clone url</li>
+<li>git remote -v (查看远程库)</li>
+<li>git remote add origin(name) url</li>
+<li>git push (提交到远程库)</li>
+<li>git fetch (远程库 -&gt; 本地库)</li>
+<li>git diff (比较远程库和本地库的区别) origin/main</li>
+</ul>]]></content:encoded>
+            <category>git</category>
+        </item>
+        <item>
+            <title><![CDATA[Welcome]]></title>
+            <link>https://Abuuu122.github.io/blog/welcome</link>
+            <guid>https://Abuuu122.github.io/blog/welcome</guid>
+            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
+            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
+<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
+<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
+<p>The blog post date can be extracted from filenames, such as:</p>
+<ul>
+<li><code>2019-05-30-welcome.md</code></li>
+<li><code>2019-05-30-welcome/index.md</code></li>
+</ul>
+<p>A blog post folder can be convenient to co-locate blog post images:</p>
+<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://abuuu122.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
+<p>The blog supports tags as well!</p>
+<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
+            <category>facebook</category>
+            <category>hello</category>
+            <category>docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[MDX Blog Post]]></title>
+            <link>https://Abuuu122.github.io/blog/mdx-blog-post</link>
+            <guid>https://Abuuu122.github.io/blog/mdx-blog-post</guid>
+            <pubDate>Sun, 01 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Blog posts support Docusaurus Markdown features, such as MDX.]]></description>
+            <content:encoded><![CDATA[<p>Blog posts support <a href="https://docusaurus.io/docs/markdown-features" target="_blank" rel="noopener noreferrer">Docusaurus Markdown features</a>, such as <a href="https://mdxjs.com/" target="_blank" rel="noopener noreferrer">MDX</a>.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p><div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button>Click me!</button></div></div>]]></content:encoded>
+            <category>docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[Long Blog Post]]></title>
+            <link>https://Abuuu122.github.io/blog/long-blog-post</link>
+            <guid>https://Abuuu122.github.io/blog/long-blog-post</guid>
+            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is the summary of a very long blog post,]]></description>
+            <content:encoded><![CDATA[<p>This is the summary of a very long blog post,</p>
+<p>Use a <code>&lt;!--</code> <code>truncate</code> <code>--&gt;</code> comment to limit blog post size in the list view.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
+            <category>hello</category>
+            <category>docusaurus</category>
+        </item>
+        <item>
+            <title><![CDATA[First Blog Post]]></title>
+            <link>https://Abuuu122.github.io/blog/first-blog-post</link>
+            <guid>https://Abuuu122.github.io/blog/first-blog-post</guid>
+            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></description>
+            <content:encoded><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet</p>]]></content:encoded>
+            <category>hola</category>
+            <category>docusaurus</category>
+        </item>
+    </channel>
+</rss>
