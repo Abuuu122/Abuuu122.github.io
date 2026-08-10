@@ -9,6 +9,10 @@
 # source ~/.zshrc
 # bundle exec jekyll serve -l -H localhost
 
+# git add .
+# git commit -m "update homepage"
+# HTTPS_PROXY=http://127.0.0.1:7890 HTTP_PROXY=http://127.0.0.1:7890 git push origin master
+
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"

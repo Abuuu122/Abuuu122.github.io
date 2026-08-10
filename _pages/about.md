@@ -14,8 +14,11 @@ I am a first-year Ph.D. student in Computer Science at Shanghai Jiao Tong Univer
 
 
 <h2 id="education">🎓 Education</h2>
-- 2025.09 - present, PhD student, CS, Shanghai Jiao Tong University.
-- 2021.09 - 2025.06, B.Eng. student, CS, Shanghai Jiao Tong University.
+- 2025.09 - Present: Ph.D. student, CS, Shanghai Jiao Tong University.
+- 2021.09 - 2025.06: B.Eng. student, CS, Shanghai Jiao Tong University.
+
+<h2 id="internship">💼 Internship</h2>
+- 2026.07 - Present: Huawei, Research Intern
 
 <h2 id="publications">📝 Publications</h2>
 
