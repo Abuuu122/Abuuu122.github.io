@@ -9,7 +9,7 @@ redirect_from:
 
 <h2 id="about">👋 About Me</h2>
 
-I am a second-year Ph.D. student in Computer Science at Shanghai Jiao Tong University, advised by [Prof. Wei Shen](https://shenwei1231.github.io/). My research interests mainly focus on 3D Vision and World Models, with the goal of building realistic, interactive virtual worlds.
+I am a second-year Ph.D. student in Computer Science at Shanghai Jiao Tong University, advised by [Prof. Wei Shen](https://shenwei1231.github.io/). My research interests mainly focus on 3D Vision and World Models, toward building immersive and interactive virtual worlds.
 
 
 
