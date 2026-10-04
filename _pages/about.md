@@ -25,7 +25,7 @@ I am a second-year Ph.D. student in Computer Science at Shanghai Jiao Tong Unive
 <article class="publication-card">
   <div class="publication-card__media">
     <img src="/images/publications/worldact.png" alt="WorldAct project overview" loading="lazy">
-    <span class="publication-card__venue">arXiv 2026</span>
+    <span class="publication-card__venue">NeurIPS 2026</span>
   </div>
   <div class="publication-card__content">
     <h3><a href="https://arxiv.org/abs/2605.15843" target="_blank" rel="noopener">WorldAct: Activating Monolithic 3D Worlds into Interactive-Ready Object-Centric Scenes</a></h3>
